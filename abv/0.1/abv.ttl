@@ -12,9 +12,18 @@
   dct:contributor "admin";
   dct:created "2025-07-07T20:47:35.942Z"^^xsd:dateTime;
   dct:creator "admin";
-  dct:modified "2025-07-07T20:47:35.942Z"^^xsd:dateTime;
+  dct:modified "2025-07-07T20:47:59.080Z"^^xsd:dateTime;
   dct:title "abv"@en;
   <http://purl.org/ontology/bibo/status> <http://purl.org/spar/pso/draft>;
   vaem:namespace "http://ontologies.metaphacts.com/abv/"^^xsd:anyURI;
   rdfs:label "abv"@en;
   owl:versionInfo "0.1" .
+
+:Abc a owl:Class;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "admin";
+  dct:created "2025-07-07T20:47:59.080Z"^^xsd:dateTime;
+  dct:creator "admin";
+  dct:modified "2025-07-07T20:47:59.080Z"^^xsd:dateTime;
+  rdfs:isDefinedBy :0.1;
+  rdfs:label "abc"@en .
