@@ -1,0 +1,223 @@
+# baseURI: https://ontologies.metaphacts.com/organization-ontology/0.2
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vaem: <http://www.linkedmodel.org/1.2/schema/vaem#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a owl:Restriction;
+  owl:allValuesFrom skos:ConceptScheme;
+  owl:hasValue <https://vocabularies.metaphacts.com/role-vocabulary>;
+  owl:onProperty skos:inScheme .
+
+<https://ontologies.metaphacts.com/organization-ontology/0.2> a owl:Ontology;
+  <http://open-services.net/ns/core#modifiedBy> "academyuser";
+  dct:contributor "academyuser";
+  dct:created "2024-03-08T11:19:37.678Z"^^xsd:dateTime;
+  dct:creator "academyuser";
+  dct:description "This ontology describes organizations and the people and projects they are related to. It is designed to provide a simple and general example for learning and demonstration."@en;
+  dct:modified "2025-02-28T19:11:25.976Z"^^xsd:dateTime;
+  dct:title "Organization Ontology"@en;
+  <http://purl.org/ontology/bibo/status> <http://purl.org/spar/pso/under-review>;
+  vaem:namespace <https://ontologies.metaphacts.com/organization-ontology/>;
+  rdfs:label "Organization Ontology"@en;
+  owl:priorVersion <https://ontologies.metaphacts.com/organization-ontology/0.1>;
+  owl:versionInfo "0.2" .
+
+<https://ontologies.metaphacts.com/organization-ontology/Company> a owl:Class;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "admin";
+  dct:created "2024-03-21T11:51:46.886Z"^^xsd:dateTime;
+  dct:creator "admin";
+  dct:modified "2024-03-21T11:51:46.886Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "Company"@en;
+  rdfs:subClassOf <https://ontologies.metaphacts.com/organization-ontology/Organization> .
+
+<https://ontologies.metaphacts.com/organization-ontology/Organization> a owl:Class;
+  <http://open-services.net/ns/core#modifiedBy> "academyuser";
+  dct:contributor "aaronEberhart", "academyuser", "admin";
+  dct:created "2024-03-08T11:34:39.476Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2025-02-27T10:45:11.244Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "Organization"@en;
+  rdfs:subClassOf [ a owl:Restriction;
+      owl:allValuesFrom <https://ontologies.metaphacts.com/organization-ontology/Project>;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/isInvolvedIn>
+    ], [ a owl:Restriction;
+      owl:onDataRange xsd:date;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/dateFounded>
+    ], [ a owl:Restriction;
+      owl:onDataRange xsd:string;
+      owl:onProperty rdfs:label
+    ], [ a owl:Restriction;
+      owl:allValuesFrom <https://ontologies.metaphacts.com/organization-ontology/Person>;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/hasMember>
+    ], [ a owl:Restriction;
+      owl:allValuesFrom <https://ontologies.metaphacts.com/organization-ontology/Position>;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/hasPosition>
+    ] .
+
+<https://ontologies.metaphacts.com/organization-ontology/Person> a owl:Class;
+  <http://open-services.net/ns/core#modifiedBy> "academyuser";
+  dct:contributor "aaronEberhart", "academyuser", "admin";
+  dct:created "2024-03-08T11:34:51.902Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2025-02-28T19:11:25.976Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "Person"@en;
+  rdfs:subClassOf [ a owl:Restriction;
+      owl:onDataRange xsd:string;
+      owl:onProperty <https://schema.org/thumbnail>
+    ], [ a owl:Restriction;
+      owl:onDataRange xsd:string;
+      owl:onProperty rdfs:label
+    ], [ a owl:Restriction;
+      owl:allValuesFrom _:4f56aa4b31ff3ec2c1282e6a76270a54;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/hasRole>
+    ], [ a owl:Restriction;
+      owl:allValuesFrom <https://ontologies.metaphacts.com/organization-ontology/Person>;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/knows>
+    ], [ a owl:Restriction;
+      owl:cardinality 1;
+      owl:onDataRange xsd:date;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/hasBirthday>
+    ], [ a owl:Restriction;
+      owl:allValuesFrom <https://ontologies.metaphacts.com/organization-ontology/Project>;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/isInvolvedIn>
+    ] .
+
+<https://ontologies.metaphacts.com/organization-ontology/Position> a owl:Class;
+  <http://open-services.net/ns/core#modifiedBy> "aaronEberhart";
+  dct:contributor "aaronEberhart";
+  dct:created "2024-03-08T12:14:53.237Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2024-03-08T12:29:59.398Z"^^xsd:dateTime;
+  rdfs:comment "The Position class represents the roles of people in the organization which may not be in permanent 1-to-1 alignment. For instance if a Role is performed by multiple People, or if a person has multiple roles over time or at once, this can be captured by Position"@en;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "Position"@en;
+  rdfs:subClassOf [ a owl:Restriction;
+      owl:allValuesFrom <https://ontologies.metaphacts.com/organization-ontology/Person>;
+      owl:minCardinality 1;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/filledBy>
+    ], [ a owl:Restriction;
+      owl:allValuesFrom _:4f56aa4b31ff3ec2c1282e6a76270a54;
+      owl:minCardinality 1;
+      owl:onProperty <https://ontologies.metaphacts.com/organization-ontology/hasRole>
+    ], [ a owl:Restriction;
+      owl:onDataRange xsd:dateTime;
+      owl:onProperty dct:date
+    ] .
+
+_:4f56aa4b31ff3ec2c1282e6a76270a54 a owl:Class;
+  owl:unionOf (skos:Concept <https://ontologies.metaphacts.com/organization-ontology/Role>) .
+
+<https://ontologies.metaphacts.com/organization-ontology/Project> a owl:Class;
+  <http://open-services.net/ns/core#modifiedBy> "academyuser";
+  dct:contributor "aaronEberhart", "academyuser";
+  dct:created "2024-03-08T11:40:39.857Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2025-02-27T10:44:19.975Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "Project"@en;
+  rdfs:subClassOf [ a owl:Restriction;
+      owl:onDataRange xsd:string;
+      owl:onProperty rdfs:label
+    ] .
+
+<https://ontologies.metaphacts.com/organization-ontology/Role> a owl:Class;
+  <http://open-services.net/ns/core#modifiedBy> "aaronEberhart";
+  dct:contributor "aaronEberhart";
+  dct:created "2024-03-08T11:38:35.220Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2024-03-08T12:18:20.754Z"^^xsd:dateTime;
+  rdfs:comment "A Role is the Abstract concept of a role within an Organization regardless of the people involved."@en;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "Role"@en;
+  rdfs:subClassOf skos:Concept .
+
+<https://ontologies.metaphacts.com/organization-ontology/dateFounded> a owl:DatatypeProperty;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "admin";
+  dct:created "2024-03-21T12:09:11.906Z"^^xsd:dateTime;
+  dct:creator "admin";
+  dct:modified "2024-03-21T12:15:53.455Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "date founded"@en .
+
+<https://ontologies.metaphacts.com/organization-ontology/filledBy> a owl:ObjectProperty;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "aaronEberhart", "admin";
+  dct:created "2024-03-08T12:14:53.237Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2024-03-21T12:15:53.455Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "filled by"@en .
+
+<https://ontologies.metaphacts.com/organization-ontology/hasBirthday> a owl:DatatypeProperty;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "admin";
+  dct:created "2024-03-21T12:16:50.698Z"^^xsd:dateTime;
+  dct:creator "admin";
+  dct:modified "2024-03-22T13:18:12.089Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "birthday"@en .
+
+<https://ontologies.metaphacts.com/organization-ontology/hasMember> a owl:ObjectProperty;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "aaronEberhart", "admin";
+  dct:created "2024-03-08T12:37:27.886Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2024-03-21T12:15:53.455Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "has member"@en .
+
+<https://ontologies.metaphacts.com/organization-ontology/hasPosition> a owl:ObjectProperty;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "aaronEberhart", "admin";
+  dct:created "2024-03-08T12:28:05.358Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2024-03-21T12:15:53.455Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "has position"@en .
+
+<https://ontologies.metaphacts.com/organization-ontology/hasRole> a owl:ObjectProperty;
+  <http://open-services.net/ns/core#modifiedBy> "admin";
+  dct:contributor "aaronEberhart", "admin";
+  dct:created "2024-03-08T11:48:41.575Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2024-03-21T12:15:53.455Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "has role"@en .
+
+<https://ontologies.metaphacts.com/organization-ontology/isInvolvedIn> a owl:ObjectProperty;
+  <http://open-services.net/ns/core#modifiedBy> "academyuser";
+  dct:contributor "academyuser";
+  dct:created "2025-02-27T10:42:46.834Z"^^xsd:dateTime;
+  dct:creator "academyuser";
+  dct:modified "2025-02-27T10:42:46.834Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "is involved in"@en .
+
+<https://ontologies.metaphacts.com/organization-ontology/knows> a owl:ObjectProperty;
+  <http://open-services.net/ns/core#modifiedBy> "aaronEberhart";
+  dct:contributor "aaronEberhart";
+  dct:created "2024-03-08T12:07:20.501Z"^^xsd:dateTime;
+  dct:creator "aaronEberhart";
+  dct:modified "2024-03-08T12:07:20.501Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "knows"@en .
+
+<https://schema.org/thumbnail> a owl:DatatypeProperty;
+  <http://open-services.net/ns/core#modifiedBy> "academyuser";
+  dct:contributor "academyuser";
+  dct:created "2025-02-28T19:11:25.976Z"^^xsd:dateTime;
+  dct:creator "academyuser";
+  dct:modified "2025-02-28T19:11:25.976Z"^^xsd:dateTime;
+  rdfs:isDefinedBy <https://ontologies.metaphacts.com/organization-ontology/0.2>;
+  rdfs:label "thumbnail"@en .
