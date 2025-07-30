@@ -1,0 +1,12 @@
+@prefix : <https://schemas.metaphacts.com/schema-ontology-mapping/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix som: <https://ontologies.metaphacts.com/schema-ontology-mapping/> .
+@prefix vaem: <http://www.linkedmodel.org/1.2/schema/vaem#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:mapping a som:SchemaOntologyMapping;
+  dct:references <https://schemas.metaphacts.com/physical-datasource-schema/testcsv/testcsv>;
+  dct:title "mapping"@en;
+  rdfs:label "mapping"@en .
